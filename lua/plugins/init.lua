@@ -1,6 +1,7 @@
 require("lazy").setup({
   -- UI / Theme
   { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  { "rebelot/kanagawa.nvim", },
 
   -- Status line
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -12,7 +13,16 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   -- Git
-  { "tpope/vim-fugitive" },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+      "ibhagwan/fzf-lua",              -- optional
+      "folke/snacks.nvim",             -- optional
+    },
+  },
+  { "ewis6991/gitsigns.nvim" },
 
   -- Smooth scroll
   { "karb94/neoscroll.nvim" },
@@ -67,6 +77,13 @@ require("lazy").setup({
   },
 
 
+  -- Marks
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
   -- File navigation
   -- {
   --   "nvim-telescope/telescope-file-browser.nvim",
@@ -74,11 +91,11 @@ require("lazy").setup({
   -- },
 
   -- Dired
-  { "X3eRo0/dired.nvim",
-    dependencies = "MunifTanjim/nui.nvim"
-  },
+  -- { "X3eRo0/dired.nvim",
+  --   dependencies = "MunifTanjim/nui.nvim"
+  -- },
 
-  -- Better Dired?
+  -- Dired
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -87,16 +104,30 @@ require("lazy").setup({
     lazy = false,
   },
 
-  -- {
-  --   "refractalize/oil-git-status.nvim",
-  --
-  --   dependencies = {
-  --     "stevearc/oil.nvim",
-  --   },
-  --
-  --   config = true,
-  -- },
+  -- Coq
+  {
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+    event = "VeryLazy",
+    init = function()
+      vim.g.coq_settings = {
+        auto_start = "shut-up", -- Start COQ automatically
+      }
+    end,
+    dependencies = {
+      { "ms-jpq/coq.artifacts", branch = "artifacts" }, -- 9000+ snippets
+      { "ms-jpq/coq.thirdparty", branch = "3p" },      -- Third party sources
+    },
+  },
 
+  -- Colorizer
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+  },
+
+  -- Mini
+  { 'nvim-mini/mini.nvim', version = '*' },
 
   -- Mason
   { "williamboman/mason.nvim",
@@ -114,7 +145,7 @@ require("lazy").setup({
 
   },
 
-    -- LSP, completion, snippets
+  -- LSP, completion, snippets
   { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" } },
   { "neovim/nvim-lspconfig" },
 

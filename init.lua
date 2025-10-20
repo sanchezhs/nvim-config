@@ -3,11 +3,12 @@ require("core.options")
 require("core.keymaps")
 require("core.autocmds")
 
--- 2) Plugin manager (lazy.nvim bootstrap + setup)
+-- 2) Plugin manager
 require("config.lazy")
 
 -- 3) Load plugin setups
-require("plugins")          -- main plugin spec list
+require("plugins")
+
 require("plugins.colorscheme")
 require("plugins.lualine")
 require("plugins.telescope")
@@ -16,13 +17,13 @@ require("plugins.neo-scroll")
 require("plugins.dashboard")
 require("plugins.trouble")
 require("plugins.mason")
--- require("plugins.dired")
 require("plugins.oil")
--- require("plugins.oil-git")
+require("plugins.neogit")
+require("plugins.colorizer")
+require("plugins.mini-surround")
+require("plugins.gitsigns")
+require("plugins.marks")
 
 
 -- 4) LSP and completion
-require("plugins.lsp")         -- diagnostics, on_attach, mason
-
-
-
+require("plugins.lsp")
