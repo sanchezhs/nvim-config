@@ -20,9 +20,10 @@ require("plugins.mason")
 require("plugins.oil")
 require("plugins.neogit")
 require("plugins.colorizer")
-require("plugins.mini-surround")
+require("plugins.mini")
 require("plugins.gitsigns")
 require("plugins.marks")
+require("plugins.cmp")
 
 
 -- 4) LSP and completion

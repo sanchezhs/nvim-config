@@ -2,7 +2,7 @@
 
 return {
 	cmd = {
-		"pyright",
+		"pyright-langserver",
 		"--stdio",
 	},
 	filetypes = {

@@ -1,5 +1,6 @@
 require('mini.surround').setup()
 
+require('mini.align').setup()
 -- Add surrounding with sa (in visual mode or on motion).
 -- Delete surrounding with sd.
 -- Replace surrounding with sr.

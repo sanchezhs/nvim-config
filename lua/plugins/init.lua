@@ -7,7 +7,15 @@ require("lazy").setup({
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  {
+    "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
+    },
+    config = false,
+  },
 
   -- Syntax & textobjects
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -22,7 +30,7 @@ require("lazy").setup({
       "folke/snacks.nvim",             -- optional
     },
   },
-  { "ewis6991/gitsigns.nvim" },
+  { "lewis6991/gitsigns.nvim" },
 
   -- Smooth scroll
   { "karb94/neoscroll.nvim" },
@@ -84,17 +92,6 @@ require("lazy").setup({
     opts = {},
   },
 
-  -- File navigation
-  -- {
-  --   "nvim-telescope/telescope-file-browser.nvim",
-  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-  -- },
-
-  -- Dired
-  -- { "X3eRo0/dired.nvim",
-  --   dependencies = "MunifTanjim/nui.nvim"
-  -- },
-
   -- Dired
   {
     'stevearc/oil.nvim',
@@ -104,19 +101,16 @@ require("lazy").setup({
     lazy = false,
   },
 
-  -- Coq
+  -- Auto complete
   {
-    "ms-jpq/coq_nvim",
-    branch = "coq",
-    event = "VeryLazy",
-    init = function()
-      vim.g.coq_settings = {
-        auto_start = "shut-up", -- Start COQ automatically
-      }
-    end,
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      { "ms-jpq/coq.artifacts", branch = "artifacts" }, -- 9000+ snippets
-      { "ms-jpq/coq.thirdparty", branch = "3p" },      -- Third party sources
+      "hrsh7th/cmp-nvim-lsp",  -- LSP source
+      "hrsh7th/cmp-buffer",    -- Buffer completions
+      "hrsh7th/cmp-path",      -- File path completions
+      "hrsh7th/cmp-cmdline",   -- Command line completions
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
     },
   },
 
