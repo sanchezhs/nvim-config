@@ -24,6 +24,7 @@ require("plugins.mini")
 require("plugins.gitsigns")
 require("plugins.marks")
 require("plugins.cmp")
+require("plugins.fugitive")
 
 
 -- 4) LSP and completion

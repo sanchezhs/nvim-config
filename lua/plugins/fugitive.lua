@@ -1,1 +1,1 @@
-require("vim-fugitive").setup({})
+-- require("fugitive").setup({})

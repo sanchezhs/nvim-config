@@ -30,6 +30,19 @@ require("lazy").setup({
       "folke/snacks.nvim",             -- optional
     },
   },
+
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "Gdiffsplit", "Gread", "Gwrite", "Gblame" },
+    keys = {
+      { "<leader>gs", ":Git<CR>", desc = "Git status" },
+      { "<leader>gd", ":Gdiffsplit<CR>", desc = "Git diff" },
+      { "<leader>gb", ":Git blame<CR>", desc = "Git blame" },
+      { "<leader>gc", ":Git commit<CR>", desc = "Git commit" },
+      { "<leader>gp", ":Git push<CR>", desc = "Git push" },
+    },
+  },
+
   { "lewis6991/gitsigns.nvim" },
 
   -- Smooth scroll
@@ -122,6 +135,8 @@ require("lazy").setup({
 
   -- Mini
   { 'nvim-mini/mini.nvim', version = '*' },
+
+  { 'tpope/vim-surround' },
 
   -- Mason
   { "williamboman/mason.nvim",
