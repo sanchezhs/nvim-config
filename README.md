@@ -130,6 +130,11 @@ Work in visual (`v`) and operator-pending mode (`d`, `c`, `y`…).
 
 Examples: `vaf` selects whole function, `dif` deletes function body, `caf` replaces the whole function.
 
+| Key | Action |
+|-----|--------|
+| `<leader>ss` | Swap argument with next |
+| `<leader>sS` | Swap argument with previous |
+
 ---
 
 ### Python
@@ -149,6 +154,22 @@ Examples: `vaf` selects whole function, `dif` deletes function body, `caf` repla
 | `<leader>ft` | Search all TODOs with Telescope |
 
 Recognised keywords: `TODO`, `FIXME`, `HACK`, `WARN`, `NOTE`, `PERF`.
+
+---
+
+### Oil
+
+| Key     | Action                   |
+| -----   | --------                 |
+| `-`     | Change to parent dir     |
+| `_`     | Open current file dir    |
+| `<C-s>` | Open in vertical split   |
+| `<C-h>` | Open in horizontal split |
+| `<C-p>` | File preview             |
+| `<C-c>` | Close Oil                |
+| `<C-l>` | Refresh Oil              |
+| `<gs>`  | Change order             |
+| `<g.>`  | Toggle hidden files      |
 
 ---
 

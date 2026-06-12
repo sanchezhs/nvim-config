@@ -55,7 +55,6 @@ local permission_hlgroups = setmetatable({}, {
     -- Colorize each permission character (rwx pattern repeats 3 times)
     for i = 2, #permission_str do
       local char = permission_str:sub(i, i)
-      local pos_in_triplet = ((i - 2) % 3)
       if char == "r" then
         table.insert(value, { "OilPermissionRead", i - 1, i })
       elseif char == "w" then
@@ -71,8 +70,10 @@ local permission_hlgroups = setmetatable({}, {
   end,
 })
 
--- Call this before setting up oil
 setup_lsd_highlights()
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = setup_lsd_highlights,
+})
 
 require("oil").setup({
   default_file_explorer = false,
@@ -114,9 +115,6 @@ require("oil").setup({
     show_hidden = true,
     natural_order = true,
     sort = { { "type", "asc" }, { "name", "asc" } },
-    is_always_hidden = function(name, _)
-      return false
-    end,
     highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
       local name = entry.name or ""
       local ext = name:match("%.([^%.]+)$") or ""

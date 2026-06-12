@@ -29,4 +29,8 @@ map("n", "<leader>e", function()
   require("oil").open()
 end, { desc = "Open Oil", silent = true })
 
+-- Transpose words (Emacs M-t style) — lua/core/transpose.lua
+map("n", "<leader>ss", function() require("core.transpose").swap_next() end, { desc = "Swap word with next",     silent = true })
+map("n", "<leader>sS", function() require("core.transpose").swap_prev() end, { desc = "Swap word with previous", silent = true })
+
 -- Git (fugitive keymaps están en plugins/init.lua bajo la spec de vim-fugitive)
