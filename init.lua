@@ -24,8 +24,10 @@ require("plugins.venv-selector")
 require("plugins.mini")
 require("plugins.gitsigns")
 require("plugins.marks")
+require("plugins.ibl")
 require("plugins.cmp")
 require("plugins.fugitive")
+require("plugins.textobjects")
 
 
 -- 4) LSP and completion

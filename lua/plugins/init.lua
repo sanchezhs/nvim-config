@@ -1,7 +1,11 @@
 require("lazy").setup({
-  -- UI / Theme
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-  { "rebelot/kanagawa.nvim", lazy = true },
+  -- UI / Themes
+  { "folke/tokyonight.nvim",   lazy = false, priority = 1000 },
+  { "rebelot/kanagawa.nvim",   lazy = true },
+  { "catppuccin/nvim",         name = "catppuccin", lazy = true },
+  { "rose-pine/neovim",        name = "rose-pine",  lazy = true },
+  { "EdenEast/nightfox.nvim",  lazy = true },
+  { "ellisonleao/gruvbox.nvim", lazy = true },
 
   -- Status line
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -19,6 +23,7 @@ require("lazy").setup({
 
   -- Syntax & textobjects
   { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
 
   -- Git
   {
@@ -87,6 +92,22 @@ require("lazy").setup({
     },
   },
 
+
+  -- TODO/FIXME/NOTE highlighting
+  {
+    "folke/todo-comments.nvim",
+    event = "BufReadPost",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+    keys = {
+      { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Find TODOs" },
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next TODO" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Prev TODO" },
+    },
+  },
+
+  -- Indentation guides
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", event = "BufReadPost" },
 
   -- Marks
   {
