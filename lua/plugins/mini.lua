@@ -1,8 +1,3 @@
-require('mini.surround').setup()
-
+-- mini.surround removido: usa tpope/vim-surround (ya en plugins/init.lua)
 require('mini.align').setup()
--- Add surrounding with sa (in visual mode or on motion).
--- Delete surrounding with sd.
--- Replace surrounding with sr.
--- Find surrounding with sf or sF (move cursor right or left).
--- Highlight surrounding with sh
+require('mini.pairs').setup()

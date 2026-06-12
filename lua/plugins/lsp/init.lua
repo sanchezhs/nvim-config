@@ -28,29 +28,15 @@ local function on_attach(_, bufnr)
   map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics to Loclist")
 end
 
--- 2) Server discovery
-local wanted = { "lua_ls", "pyright", "ruff", "yamlls", "bashls", "ts_ls" }
-local function exists(t, x)
-  for _, v in ipairs(t) do
-    if v == x then return true end
-  end
-  return false
+-- 2) Server setup — per-server config in lua/plugins/lsp/<name>.lua (optional)
+local wanted = { "lua_ls", "pyright", "ruff", "yamlls", "jsonls", "bashls", "ts_ls" }
+
+for _, name in ipairs(wanted) do
+  local ok, user_cfg = pcall(require, "plugins.lsp." .. name)
+  local cfg = vim.tbl_deep_extend("force", ok and user_cfg or {}, { on_attach = on_attach })
+  vim.lsp.config(name, cfg)
 end
 
-local servers = {}
-for _, f in ipairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
-  local name = vim.fn.fnamemodify(f, ":t:r")
-  if name ~= "init" and exists(wanted, name) then
-    local user_cfg = dofile(f) or {}
-
-    -- Merge user config with on_attach
-    local cfg = vim.tbl_deep_extend("force", user_cfg, { on_attach = on_attach })
-
-    vim.lsp.config(name, cfg)
-    table.insert(servers, name)
-  end
-end
-
-vim.lsp.enable(servers)
+vim.lsp.enable(wanted)
 return {}
 

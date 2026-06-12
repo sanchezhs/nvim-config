@@ -1,4 +1,4 @@
-local table = {
+local header = {
     [[                                                                              ]],
     [[                                    ██████                                    ]],
     [[                                ████▒▒▒▒▒▒████                                ]],
@@ -21,7 +21,7 @@ local table = {
 require('dashboard').setup {
   theme = 'hyper',
   config = {
-    header = table,
+    header = header,
     shortcut = {
       {
         icon = '󰊳 ',

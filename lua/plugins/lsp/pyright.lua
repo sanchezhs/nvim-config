@@ -19,14 +19,13 @@ return {
 	},
 	-- https://microsoft.github.io/pyright/#/settings?id=pyright-settings
 	settings = {
-		pyright = {
-			strict = true,
-		},
 		python = {
 			analysis = {
-				autoSearchPaths = true,
+				typeCheckingMode    = "basic", -- "off" | "basic" | "standard" | "strict"
+				autoSearchPaths     = true,
 				useLibraryCodeForTypes = true,
-				diagnosticMode = "openFilesOnly",
+				diagnosticMode      = "openFilesOnly",
+				disableOrganizeImports = true, -- ruff se encarga de imports
 			},
 		},
 	},

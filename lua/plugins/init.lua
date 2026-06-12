@@ -1,7 +1,7 @@
 require("lazy").setup({
   -- UI / Theme
   { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-  { "rebelot/kanagawa.nvim", },
+  { "rebelot/kanagawa.nvim", lazy = true },
 
   -- Status line
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -18,19 +18,9 @@ require("lazy").setup({
   },
 
   -- Syntax & textobjects
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
 
   -- Git
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional - Diff integration
-      "ibhagwan/fzf-lua",              -- optional
-      "folke/snacks.nvim",             -- optional
-    },
-  },
-
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "Gdiffsplit", "Gread", "Gwrite", "Gblame" },
@@ -125,6 +115,16 @@ require("lazy").setup({
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
     },
+  },
+
+  -- Formatter
+  { "stevearc/conform.nvim" },
+
+  -- Python venv selector
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "neovim/nvim-lspconfig" },
+    event = "VeryLazy",
   },
 
   -- Colorizer
