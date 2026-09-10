@@ -2,6 +2,7 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.autoformat = false
 
 local opt = vim.opt
 

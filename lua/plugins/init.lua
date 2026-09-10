@@ -159,6 +159,13 @@ require("lazy").setup({
 
   { 'tpope/vim-surround' },
 
+  -- Markdown rendering
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    opts = {},
+  },
+
   -- Mason
   { "williamboman/mason.nvim",
     init = function()
