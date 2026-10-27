@@ -40,3 +40,11 @@ opt.mouse      = "a"
 opt.clipboard  = "unnamedplus"
 opt.updatetime = 250
 opt.timeoutlen = 400
+
+-- Clipboard
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = { ['+'] = require('vim.ui.clipboard.osc52').copy('+') },
+  paste = { ['+'] = function() return {} end }, -- herdr suele fallar al leer, así evitas cuelgues
+}
+

@@ -29,6 +29,13 @@ map("n", "<leader>e", function()
   require("oil").open()
 end, { desc = "Open Oil", silent = true })
 
+map("n", "<leader>or", function()
+  local root = vim.fs.root(0, { ".git" })
+  if root then
+    require("oil").open(root)
+  end
+end, { desc = "Open Oil at project root", silent = true })
+
 -- Transpose words (Emacs M-t style) — lua/core/transpose.lua
 map("n", "<leader>ss", function() require("core.transpose").swap_next() end, { desc = "Swap word with next",     silent = true })
 map("n", "<leader>sS", function() require("core.transpose").swap_prev() end, { desc = "Swap word with previous", silent = true })
