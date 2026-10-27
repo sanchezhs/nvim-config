@@ -10,7 +10,7 @@ require("lazy").setup({
   -- Status line
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
-  -- Telescope
+  -- Telescope (kept because other plugins depend on it: todo-comments, venv-selector, neogit)
   {
     "nvim-telescope/telescope.nvim",
     event = "VeryLazy",
@@ -19,6 +19,13 @@ require("lazy").setup({
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
     },
     config = false,
+  },
+
+  -- fzf-lua (primary picker: find_files, live_grep with rg glob args, etc.)
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
   },
 
   -- Syntax & textobjects
